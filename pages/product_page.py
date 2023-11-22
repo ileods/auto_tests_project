@@ -25,11 +25,13 @@ class ProductPage(BasePage):
 
     def should_be_confirmation(self):
         assert (self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-                == self.browser.find_element(*ProductPageLocators.CONFIRMATION_MESSAGE1).text), "Book is not in basket"
+                == self.browser.find_element(*ProductPageLocators.CONFIRMATION_MESSAGE1).text), \
+            "Name of book does not match with name of book in basket"
 
     def should_be_right_price(self):
         assert (self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
-                == self.browser.find_element(*ProductPageLocators.CONFIRMATION_MESSAGE2).text), "Price is not right"
+                == self.browser.find_element(*ProductPageLocators.CONFIRMATION_MESSAGE2).text), \
+            "Price does not match with price in basket"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.CONFIRMATION_MESSAGE1), \
