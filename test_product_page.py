@@ -1,9 +1,22 @@
 import pytest
+import time
 from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
 
 
+@pytest.mark.user
 class TestUserAddToBasketFromProductPage:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/ru/accounts/login/'
+        email = str(time.time()) + "@fakemail.org"
+        self.browser = browser
+        self.page = LoginPage(browser, link)
+        self.page.open()
+        self.page.register_new_user(email, 'Bart09080!')
+        self.page.should_be_authorized_user()
+
     def test_user_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
         page = ProductPage(browser, link)
