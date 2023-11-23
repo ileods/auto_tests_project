@@ -73,6 +73,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+    page.should_be_login_link()
 
 
 @pytest.mark.need_review

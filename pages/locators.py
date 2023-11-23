@@ -26,5 +26,5 @@ class BasePageLocators:
 
 
 class BasketPageLocators:
-    EMPTY_TEXT = (By.CSS_SELECTOR, '#content_inner p')
+    EMPTY_TEXT = (By.CSS_SELECTOR, '#content_inner > p')
     PRODUCT_ITEM = (By.CSS_SELECTOR, '.basket-items:first-child')

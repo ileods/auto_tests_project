@@ -6,16 +6,19 @@ class ProductPage(BasePage):
     def add_to_basket_promo(self):
         self.should_be_promo_url()
         self.should_be_basket_button()
-        self.browser.find_element(*ProductPageLocators.BASKET_BTN).click()
+        self.click_add_to_basket()
         self.solve_quiz_and_get_code()
         self.should_be_confirmation()
         self.should_be_right_price()
 
     def add_to_basket(self):
         self.should_be_basket_button()
-        self.browser.find_element(*ProductPageLocators.BASKET_BTN).click()
+        self.click_add_to_basket()
         self.should_be_confirmation()
         self.should_be_right_price()
+
+    def click_add_to_basket(self):
+        return self.browser.find_element(*ProductPageLocators.BASKET_BTN).click()
 
     def should_be_promo_url(self):
         assert "promo" in self.browser.current_url, "It is not a Promo link"
