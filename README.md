@@ -92,6 +92,7 @@
           page = ProductPage(browser, link)
           page.open()
           page.go_to_login_page()
+          page.should_be_login_link()
 ```
 <li>Проверка гость переходит в корзину со страницы товара и не видит товаров в ней </li>
 
